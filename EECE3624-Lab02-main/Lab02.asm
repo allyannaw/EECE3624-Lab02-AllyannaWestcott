@@ -43,10 +43,10 @@ mainLoop:
     cbi PORTC, PORTC3
 
     ; kill some time
-    ldi R16, 40                 ; R16 is outer loop counter
+    ldi R16, 40                 ; R16 is outer loop counter 
 outer_loop1:
-    ldi R24, low(0x4000)        ; load low and high parts of R25:R24 pair with
-    ldi R25, high(0x4000)       ; loop count by loading registers separately
+    ldi R24, low(0x0741)        ; load low and high parts of R25:R24 pair with ////// EDITED 9/3/26 : inner loop now loops 0x0741 times so that each outer loop lasts 1 ms
+    ldi R25, high(0x0741)       ; loop count by loading registers separately
     inner_loop1:
         sbiw R24, 1             ; decrement inner loop counter (R25:R24 pair)
         brne inner_loop1        ; loop back if R25:R24 isn't zero
@@ -57,10 +57,10 @@ outer_loop1:
     sbi PORTC, PORTC3
 
     ; kill some time
-    ldi R16, 40                 ; R16 is outer loop counter
+    ldi R16, 160                ; R16 is outer loop counter ////// EDITED 9/3/26 : outer loop loops 160 times so that the LED is off for 160 ms.
 outer_loop2:
-    ldi R24, low(0x4000)        ; load low and high parts of R25:R24 pair with
-    ldi R25, high(0x4000)       ; loop count by loading registers separately
+    ldi R24, low(0x0741)        ; load low and high parts of R25:R24 pair with
+    ldi R25, high(0x0741)       ; loop count by loading registers separately
     inner_loop2:
         sbiw R24, 1             ; decrement inner loop counter (R25:R24 pair)
         brne inner_loop2        ; loop back if R25:R24 isn't zero
